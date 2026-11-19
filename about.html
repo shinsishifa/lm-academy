@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us | LM Academy</title>
+
+  <!-- Google Fonts: Poppins & Montserrat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    :root {
+      --primary: #8C2C3F;
+      --primary-dark: #6E2030;
+      --accent: #FCB433;
+      --accent-dark: #E09B1E;
+      --white: #FFFFFF;
+      --surface-soft: #FDF8F9;
+      --text-dark: #1F1F24;
+      --text-muted: #5C5C66;
+      --border-light: #EAE4E6;
+      --shadow-sm: 0 6px 20px rgba(140, 44, 63, 0.08);
+      --shadow-md: 0 14px 34px rgba(140, 44, 63, 0.14);
+      --radius-md: 12px;
+      --radius-lg: 20px;
+      --transition: all 0.28s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--white);
+      color: var(--text-dark);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, .brand-logo {
+      font-family: 'Montserrat', sans-serif;
+      color: var(--primary);
+      line-height: 1.2;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Header & Navigation */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background-color: var(--white);
+      border-bottom: 1px solid var(--border-light);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+    }
+
+    .nav-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 76px;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.35rem;
+      font-weight: 800;
+      letter-spacing: 0.4px;
+    }
+
+    .brand-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background-color: var(--primary);
+      color: var(--accent);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 1rem;
+    }
+
+    .brand-logo span.highlight {
+      color: var(--accent-dark);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    nav a {
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: var(--text-dark);
+      transition: var(--transition);
+      position: relative;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    nav a.active::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 100%;
+      height: 2.5px;
+      background-color: var(--accent);
+      border-radius: 2px;
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.6rem;
+      color: var(--primary);
+      cursor: pointer;
+    }
+
+    /* Page Hero Header */
+    .page-hero {
+      background: linear-gradient(125deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: var(--white);
+      padding: 60px 0;
+      text-align: center;
+    }
+
+    .page-hero h1 {
+      color: var(--white);
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .breadcrumb {
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .breadcrumb a {
+      color: var(--accent);
+    }
+
+    /* Content Sections */
+    section {
+      padding: 72px 0;
+    }
+
+    .soft-bg {
+      background-color: var(--surface-soft);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .about-text h2 {
+      font-size: 2rem;
+      margin-bottom: 16px;
+    }
+
+    .about-text p {
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      font-size: 0.98rem;
+    }
+
+    .feature-list {
+      list-style: none;
+      margin-top: 20px;
+    }
+
+    .feature-list li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+      font-weight: 500;
+      color: var(--text-dark);
+    }
+
+    .feature-list li::before {
+      content: "✓";
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      background-color: var(--accent);
+      color: var(--text-dark);
+      border-radius: 50%;
+      font-weight: 700;
+      font-size: 0.8rem;
+    }
+
+    .mission-vision-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+
+    .mv-card {
+      background: var(--white);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 32px;
+      box-shadow: var(--shadow-sm);
+      border-top: 5px solid var(--primary);
+    }
+
+    .mv-card.accent-top {
+      border-top-color: var(--accent);
+    }
+
+    .mv-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+    }
+
+    .mv-card p {
+      color: var(--text-muted);
+      font-size: 0.94rem;
+    }
+
+    /* Core Values */
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    .value-box {
+      background-color: var(--white);
+      padding: 24px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-light);
+      text-align: center;
+    }
+
+    .value-box .val-num {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--accent-dark);
+      margin-bottom: 8px;
+    }
+
+    .value-box h4 {
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+    }
+
+    .value-box p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 24px;
+      border-radius: var(--radius-md);
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 0.94rem;
+      cursor: pointer;
+      border: none;
+      transition: var(--transition);
+    }
+
+    .btn-maroon {
+      background-color: var(--primary);
+      color: var(--white);
+    }
+
+    .btn-maroon:hover {
+      background-color: var(--primary-dark);
+    }
+
+    /* Footer */
+    footer {
+      background-color: #181315;
+      color: rgba(255, 255, 255, 0.82);
+      padding: 56px 0 24px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 32px;
+      padding-bottom: 36px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    footer h4 {
+      color: var(--accent);
+      font-size: 1rem;
+      margin-bottom: 14px;
+    }
+
+    footer p, footer li {
+      font-size: 0.88rem;
+      color: rgba(255, 255, 255, 0.75);
+      list-style: none;
+      margin-bottom: 8px;
+    }
+
+    footer a:hover {
+      color: var(--accent);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 20px;
+      font-size: 0.84rem;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    @media (max-width: 900px) {
+      .about-grid,
+      .mission-vision-grid,
+      .values-grid,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      nav ul {
+        display: none;
+        position: absolute;
+        top: 76px;
+        left: 0;
+        right: 0;
+        background-color: var(--white);
+        flex-direction: column;
+        padding: 20px 24px;
+        border-bottom: 1px solid var(--border-light);
+        box-shadow: var(--shadow-sm);
+      }
+
+      nav ul.open {
+        display: flex;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container nav-wrapper">
+      <a href="index.html" class="brand-logo">
+        <span class="brand-badge">LM</span>
+        <span>LM <span class="highlight">Academy</span></span>
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation">
+        &#9776;
+      </button>
+
+      <nav>
+        <ul id="navMenu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html" class="active">About</a></li>
+          <li><a href="course-grid.html">Courses</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="blog-details.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Page Hero Header -->
+  <div class="page-hero">
+    <div class="container">
+      <h1>About LM Academy</h1>
+      <div class="breadcrumb">
+        <a href="index.html">Home</a> / About Us
+      </div>
+    </div>
+  </div>
+
+  <!-- About Intro Section -->
+  <section>
+    <div class="container about-grid">
+      <div class="about-text">
+        <h2>Empowering Learners Through Quality Education</h2>
+        <p>
+          LM Academy was founded with a clear objective: to make high-quality learning structured, accessible, and practical for students and aspiring professionals.
+        </p>
+        <p>
+          We believe in bridging the gap between theoretical knowledge and practical execution by building strong fundamentals through step-by-step guidance.
+        </p>
+        <ul class="feature-list">
+          <li>Structured curriculum crafted by experienced tutors</li>
+          <li>Interactive and student-focused learning environment</li>
+          <li>Continuous progress tracking and direct feedback</li>
+        </ul>
+        <div style="margin-top: 24px;">
+          <a href="course-grid.html" class="btn btn-maroon">Explore Our Courses</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="mv-card accent-top" style="margin-bottom: 20px;">
+          <h3>Interactive Learning Focus</h3>
+          <p>
+            Our method breaks complex topics into clear, manageable steps to build long-term confidence and academic resilience.
+          </p>
+        </div>
+        <div class="mv-card">
+          <h3>Community &amp; Growth</h3>
+          <p>
+            Join a supportive learning ecosystem designed to foster curiosity, continuous improvement, and career readiness.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission & Vision -->
+  <section class="soft-bg">
+    <div class="container">
+      <div class="mission-vision-grid">
+        <div class="mv-card">
+          <h3>Our Mission</h3>
+          <p>
+            To provide accessible, high-quality, and structured education that empowers individuals to master essential skills, excel academically, and achieve their professional aspirations.
+          </p>
+        </div>
+
+        <div class="mv-card accent-top">
+          <h3>Our Vision</h3>
+          <p>
+            To be a trusted learning academy recognized for excellence in structured instruction, personal mentorship, and measurable student outcomes.
+          </p>
+        </div>
+      </div>
+
+      <!-- Core Values -->
+      <div style="margin-top: 56px;">
+        <h2 style="text-align: center; margin-bottom: 8px;">Our Core Values</h2>
+        <p style="text-align: center; color: var(--text-muted);">The principles that guide everything we teach and do.</p>
+        
+        <div class="values-grid">
+          <div class="value-box">
+            <div class="val-num">01</div>
+            <h4>Excellence</h4>
+            <p>We hold high standards in teaching quality, learning materials, and student outcomes.</p>
+          </div>
+          <div class="value-box">
+            <div class="val-num">02</div>
+            <h4>Integrity</h4>
+            <p>Honest guidance, transparent goals, and dedicated support for every student.</p>
+          </div>
+          <div class="value-box">
+            <div class="val-num">03</div>
+            <h4>Growth</h4>
+            <p>Encouraging continuous progress, curiosity, and practical skills development.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="index.html" class="brand-logo" style="color: var(--white); margin-bottom: 12px;">
+            <span class="brand-badge">LM</span>
+            <span>LM <span class="highlight">Academy</span></span>
+          </a>
+          <p>
+            Empowering learners with structured education, practical skills, and consistent guidance.
+          </p>
+        </div>
+
+        <div>
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="course-grid.html">Courses</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="blog-details.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Site Status</h4>
+          <ul>
+            <li><a href="maintenance.html">Maintenance Notice</a></li>
+            <li><a href="error.html">Error Page Preview</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        &copy; <span id="year"></span> LM Academy. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.getElementById('navMenu');
+    const yearEl = document.getElementById('year');
+
+    yearEl.textContent = new Date().getFullYear();
+
+    menuToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('open');
+    });
+  </script>
+</body>
+</html>
